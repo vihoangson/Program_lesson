@@ -6,13 +6,16 @@
 **/
 
 require_once("class/sqlite.php");
-
+require_once("class/lesson2.php");
 $sqlite = new My_sqlite;
+$lesson2 = new Lesson2($sqlite);
 
 
+if(preg_match("/^do_/", $_GET["do"])){
+	$lesson2->{$_GET["do"]}();
+}
 
 if(!empty($_POST["form"])){
-
 	$user_name		= $_POST["name_txt"];
 	$user_email		= $_POST["email_txt"];
 	$user_age		= $_POST["age_txt"];
@@ -28,10 +31,6 @@ if(!empty($_POST["form"])){
 		exit;
 	}
 }
-
-$result = $sqlite->query('SELECT * FROM user ORDER BY user_id desc;');
-$data = $sqlite->fetchAll($result);
-
 ?><!DOCTYPE html>
 <html lang="vi">
 	<head>
@@ -52,81 +51,26 @@ $data = $sqlite->fetchAll($result);
 	</head>
 	<body>
 	<div class="container">
-		<form action="" method="POST" role="form" enctype="multipart/form-data" id="form_ajax">
-			<legend>Form title</legend>
-			<div class="form-group">
-				<label for="input_name">Họ và tên</label>
-				<input type="text" name="name_txt" class="form-control" id="input_name" placeholder="Nguyễn Văn A">
-			</div>
-			<div class="form-group">
-				<label for="email_txt">Email</label>
-				<input type="text" name="email_txt" class="form-control" id="email_txt" placeholder="nguyenvana@gmail.com">
-			</div>
-			<div class="form-group">
-				<label for="age_txt">Tuổi</label>
-				<input type="text" name="age_txt" class="form-control" id="age_txt" placeholder="20">
-			</div>
-			<div class="form-group">
-				<label for="m_id">Giới tính</label>
-				<input type="radio" name="sex_txt" class="" id="m_id">
-				<label for="m_id">Nam</label>
-				<input type="radio" name="sex_txt" class="" id="f_id">
-				<label for="f_id">Nữ</label>
-			</div>
-			<div class="form-group">
-				<label for="phone_txt">Điện thoại</label>
-				<input type="text" name="phone_txt" class="form-control" id="phone_txt" placeholder="0121 885 1144">
-			</div>
-			<div class="form-group">
-				<label for="finger_tip">Vân tay</label>
-				<input type="text" name="finger_txt" class="form-control" id="finger_tip" placeholder="20">
-			</div>
-			<div class="form-group">
-				<label for="note_txt">Ghi chú</label>
-				<textarea name="note_txt" id="note_txt" class="form-control"></textarea>
-			</div>
 
-			<input type="hidden" name="post" value="1">
-			<button type="submit" class="btn btn-primary" name="form" value="submit">Submit</button>
-		</form>
-		<h2> Dữ liệu đã nhập </h2>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th><?php echo "user_id"; ?></th>
-					<th><?php echo "user_name"; ?></th>
-					<th><?php echo "user_email"; ?></th>
-					<th><?php echo "user_age"; ?></th>
-					<th><?php echo "user_sex"; ?></th>
-					<th><?php echo "user_phone"; ?></th>
-					<th><?php echo "user_note"; ?></th>
-					<th><?php echo "user_finger"; ?></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php 
-				foreach ($data as $key => $value) {
-					?>
-					<tr>
-						<td><?php echo $value["user_id"]; ?></td>
-						<td><?php echo $value["user_name"]; ?></td>
-						<td><?php echo $value["user_email"]; ?></td>
-						<td><?php echo $value["user_age"]; ?></td>
-						<td><?php echo $value["user_sex"]; ?></td>
-						<td><?php echo $value["user_phone"]; ?></td>
-						<td><?php echo $value["user_note"]; ?></td>
-						<td><?php echo $value["user_finger"]; ?></td>
-					</tr>
-					<?php 
-				} ?>
+		<?php $lesson2->show_form_edit(); ?>
+		<?php $lesson2->show_result(); ?>
 
-			</tbody>
-		</table>		
 	</div>
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$("form input[name='name_txt']").focus();
 
+$(document).keydown(function(e){
+	//key [F4]
+	if (e.which == 115) {
+		e.preventDefault();
+		//$("#form_submit").submit();
+		$("button[name='form']").trigger("click");
+	}
+});
+	</script>
 	</body>
 </html>
