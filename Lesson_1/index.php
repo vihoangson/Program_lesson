@@ -1,4 +1,10 @@
 <?php
+/**
+	* Lession 1:Upload file ajax
+	* @github https://github.com/vihoangson/Program_lesson.git
+	* @author Vi Hoàng Sơn <vihoangson@gmail.com>
+**/
+
 define("PATH_UPLOAD", $_SERVER["DOCUMENT_ROOT"]."/uploadfile/store/");
 if(!file_exists(PATH_UPLOAD)){
 	mkdir(PATH_UPLOAD);
@@ -129,7 +135,6 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 			$("input[name='input_file']").change(function(){
 				$(this).closest('form').submit();
 			});
-			
 			$("form#form_action").submit(function(event) {
 				return confirm("Bạn có muốn thực hiện?");
 			});
