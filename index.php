@@ -22,8 +22,8 @@
 				<h1>Program Lesson</h1>
 				<div class="well">
 					<ul>
-						<li><a href="/Lesson_1">Lesson 1</a></li>
-						<li><a href="/Lesson_2">Lesson 2</a></li>
+						<li><a href="Lesson_1">Lesson 1</a></li>
+						<li><a href="Lesson_2">Lesson 2</a></li>
 					</ul>
 				</div>
 			</section>

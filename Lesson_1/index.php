@@ -5,7 +5,8 @@
 	* @author Vi Hoàng Sơn <vihoangson@gmail.com>
 **/
 
-define("PATH_UPLOAD", $_SERVER["DOCUMENT_ROOT"]."/Lesson_1/store/");
+//define("PATH_UPLOAD", $_SERVER["DOCUMENT_ROOT"]."/Lesson_1/store/");
+define("PATH_UPLOAD", "store/");
 if(!file_exists(PATH_UPLOAD)){
 	mkdir(PATH_UPLOAD);
 	chmod(PATH_UPLOAD,0777);

@@ -37,10 +37,13 @@ if(!empty($_POST["post"])){
 		$sql='INSERT INTO user("user_id","user_name","user_email","user_age","user_sex","user_phone","user_note","user_finger") VALUES
 		(null,"'.$user_name.'","'.$user_email.'","'.$user_age.'","'.$user_sex.'","'.$user_phone.'","'.$user_note.'","'.$user_finger.'");';
 	}
-	$error=false;
+
 	if(!$sqlite->exec($sql)){
 		$error=true;
+	}else{
+		$error=false;
 	}
+
 	if(intval($_POST["ajax"]) == 1){
 		if($error){
 			echo 0;
@@ -49,7 +52,6 @@ if(!empty($_POST["post"])){
 		}
 		exit;
 	}
-
 }
 ?><!DOCTYPE html>
 <html lang="vi">
