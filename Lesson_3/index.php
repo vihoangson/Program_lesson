@@ -34,7 +34,7 @@ Better Markdown Parser in PHP
 
 ### Features
 
-![vihoangson@gmail.com](https://avatars3.githubusercontent.com/u/4572510?v=3&s=460)  1
+![vihoangson@gmail.com](https://avatars3.githubusercontent.com/u/4572510?v=3&s=460)
 		";
 		$_POST["input_markdown"] = $string;
 	}
