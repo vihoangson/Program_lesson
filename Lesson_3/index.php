@@ -20,19 +20,40 @@ $parsedown					= new Parsedown;
 	$text		= $parsedown->text($string);
 	if(!$string){
 		$string = "
-## Parsedown
+Heading
+=======
 
-[![Build Status](https://img.shields.io/travis/erusev/parsedown/master.svg?style=flat-square)](https://travis-ci.org/erusev/parsedown)
-<!--[![Total Downloads](http://img.shields.io/packagist/dt/erusev/parsedown.svg?style=flat-square)](https://packagist.org/packages/erusev/parsedown)-->
+Sub-heading
+-----------
+ 
+### Another deeper heading
+ 
+Paragraphs are separated
+by a blank line.
 
-Better Markdown Parser in PHP
+Leave 2 spaces at the end of a line to do a  
+line break
 
-[Demo](http://parsedown.org/demo) |
-[Benchmarks](http://parsedown.org/speed) |
-[Tests](http://parsedown.org/tests/) |
-[Documentation](https://github.com/erusev/parsedown/wiki/)
+Text attributes *italic*, **bold**, 
+`monospace`, ~~strikethrough~~ .
 
-### Features
+A [link](http://example.com).
+[27]
+
+Shopping list:
+
+  * apples
+  * oranges
+  * pears
+
+Numbered list:
+
+  1. apples
+  2. oranges
+  3. pears
+
+The rain---not the reign---in
+Spain.
 
 ![vihoangson@gmail.com](https://avatars3.githubusercontent.com/u/4572510?v=3&s=460)
 		";
