@@ -45,6 +45,49 @@
 				</ul>
 			</section>
 
+			<div class="container text-center">
+				<hr />
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="col-md-3">
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">About us</a></li>
+								<li><a href="#">Blog</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="nangluctieman.com" target="_blank">Nangluctieman</a></li>
+								<li><a href="banhsusu.com" target="_blank">Nanhsusu</a></li>
+								<li><a href="dacsandaklak.vus.vn" target="_blank">Dacsandaklak</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="hocboi.vus.vn" target="_blank">Hocboi</a></li>
+								<li><a href="phapthi.vus.vn" target="_blank">Phapthi</a></li>
+								<li><a href="santo.vus.vn" target="_blank">Santo</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="vihoangson.vus.vn" target="_blank">Vihoangson</a></li>
+								<li><a href="tainangtieman.com" target="_blank">Tainangtieman</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-lg-12">
+						<ul class="nav nav-pills nav-justified">
+							<li><a href="/">© 2015 Vi Hoàng Sơn.</a></li>
+							<li><a href="#">Sharing for everyone</a></li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
 		</div>
 		<!-- jQuery -->

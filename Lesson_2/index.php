@@ -60,7 +60,7 @@ if(!empty($_POST["post"])){
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Lession 2:Submit form by ajax</title>
+		<title>Lession 2: Submit form by ajax</title>
 
 		<!-- Bootstrap CSS -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -101,6 +101,7 @@ if(!empty($_POST["post"])){
 			</center>
 		<?php $lesson2->show_form_edit(); ?>
 		<div id="load_result_box"><?php $lesson2->show_result(); ?></div>
+		<center><a href="/" class="btn btn-lg btn-default"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Back to home page</a></center>
 
 	</div>
 		<!-- jQuery -->

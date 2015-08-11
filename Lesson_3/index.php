@@ -72,7 +72,7 @@ $text_sample	= $parsedown->text($string_sample);
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Pares markdown</title>
+		<title>Lesson 3: Pares markdown</title>
 
 		<!-- Bootstrap CSS -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -112,8 +112,10 @@ $text_sample	= $parsedown->text($string_sample);
 				<h1>Part 2: Data sample in file data_sample.php</h1>
 				<div class="well"><?php echo $text_sample ?></div>
 			</section>
+
 			<center><a href="/" class="btn btn-lg btn-default"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Back to home page</a></center>
-			
+
+
 		</div>
 
 		<!-- jQuery -->
