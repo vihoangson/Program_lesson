@@ -28,6 +28,23 @@
 					</ul>
 				</div>
 			</section>
+			<hr>
+			<section>
+				<h1> Relate website</h1>
+				<ul>
+					<li>
+						<a href="https://sharing-vihoangson.rhcloud.com" target="_blank">
+							Sharing - Wordpress in Openshift
+						</a>
+					</li>
+					<li>
+						<a href="http://santo-vihoangson.rhcloud.com/" target="_blank">
+							Program_lesson - PHP in Openshift
+						</a>
+					</li>
+				</ul>
+			</section>
+
 
 		</div>
 		<!-- jQuery -->

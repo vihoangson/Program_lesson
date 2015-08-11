@@ -112,6 +112,7 @@ $text_sample	= $parsedown->text($string_sample);
 				<h1>Part 2: Data sample in file data_sample.php</h1>
 				<div class="well"><?php echo $text_sample ?></div>
 			</section>
+			<center><a href="/" class="btn btn-lg btn-default"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Back to home page</a></center>
 			
 		</div>
 
