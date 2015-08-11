@@ -74,6 +74,10 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 	</head>
 	<body>
 	<div class="container">
+			<center>
+				<p><img src="https://vihoangson.files.wordpress.com/2015/08/2015-08-11-12_31_13-lesson-1-tc3acm-ve1bb9bi-google.jpg" style="width:430px"></p>
+				<p><img src="https://vihoangson.files.wordpress.com/2015/08/2015-08-11-12_32_20-upload_ajax01-500c397334.jpg" style="width:430px"></p>
+			</center>
 		<form action="" method="POST" role="form" enctype="multipart/form-data" id="form_ajax">
 			<legend>Form title</legend>
 			<div class="form-group">

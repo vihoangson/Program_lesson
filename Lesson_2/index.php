@@ -95,7 +95,10 @@ if(!empty($_POST["post"])){
 	</head>
 	<body>
 	<div class="container">
-
+			<center>
+				<p><img src="https://vihoangson.files.wordpress.com/2015/08/2015-08-11-12_28_23-lesson-2-tc3acm-ve1bb9bi-google.jpg" style="width:430px"></p>
+				<p><img src="https://vihoangson.files.wordpress.com/2015/08/2015-08-11-12_29_04-form-ajax-tc3acm-ve1bb9bi-google.jpg" style="width:430px"></p>
+			</center>
 		<?php $lesson2->show_form_edit(); ?>
 		<div id="load_result_box"><?php $lesson2->show_result(); ?></div>
 

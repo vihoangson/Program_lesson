@@ -65,8 +65,10 @@ $text_sample	= $parsedown->text($string_sample);
 	</head>
 	<body>
 		<div class="container">
-
-
+			<center>
+				<p><img src="https://vihoangson.files.wordpress.com/2015/08/2015-08-11-12_23_14-lesson-3-tc3acm-ve1bb9bi-google.jpg" style="width:430px"></p>
+				<p><img src="https://vihoangson.files.wordpress.com/2015/08/2015-08-11-12_24_58-markdown-tc3acm-ve1bb9bi-google.jpg" style="width:430px"></p>
+			</center>
 			<section>
 				<h1>Part 1: Input in textarea</h1>
 				<form action="" method="POST" role="form">
