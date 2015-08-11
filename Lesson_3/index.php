@@ -1,9 +1,15 @@
 <?php
 /**
-	* Lesson 3:Submit form by ajax
+	* Lesson 3: Markdow
+	* Markdown là gì?
+	* Về định nghĩa thì Markdown là một ngôn ngữ đánh dấu. Wtf?? Thế ngôn ngữ đánh dấu là gì? Ngôn ngữ đánh dấu rất đơn giản là một cách để làm cho một vài đoạn văn bản có ý nghĩa khác với các đoạn khác.
+	* VD: Đây là một chữ nghiêng.
+	* Rõ ràng chúng ta đã đánh dấu chữ "nghiêng" có ý nghĩa khác với các chữ còn lại trong câu. Ngôn ngữ đánh dấu chỉ đơn giản là vậy thôi.
+	* Có nhiều kiểu ngôn ngữ đánh dấu khác nhau phục vụ nhiều mục đích khác nhau. Trong đó loại nổi tiếng nhất là HTML (và XHTML) dùng cho web.
 	* @github https://github.com/vihoangson/Program_lesson.git
 	* @author Vi Hoàng Sơn <vihoangson@gmail.com>
 **/
+
 require_once("class/Parsedown.php");
 $parsedown = new Parsedown;
 $text = $parsedown->text("
@@ -60,10 +66,10 @@ It passes most of the CommonMark tests. Most of the tests that don't pass deal w
 **How can I help?**
 
 Use it, star it, share it and if you feel generous, [donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=528P3NZQMP8N2).
-  
-");
 
+");
 ?>
+
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
