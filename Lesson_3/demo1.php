@@ -13,13 +13,10 @@
 	* http://ngochin.com/2013/01/03/markdown/
 	* @author Vi Hoàng Sơn <vihoangson@gmail.com>
 **/
+
 require_once("class/Parsedown.php");
-$parsedown					= new Parsedown;
-	$parsedown	= new Parsedown;
-	$string		= $_POST["input_markdown"];
-	$text		= $parsedown->text($string);
-	if(!$string){
-		$string = "
+$parsedown = new Parsedown;
+$text = $parsedown->text("
 ## Parsedown
 
 [![Build Status](https://img.shields.io/travis/erusev/parsedown/master.svg?style=flat-square)](https://travis-ci.org/erusev/parsedown)
@@ -34,15 +31,47 @@ Better Markdown Parser in PHP
 
 ### Features
 
-![vihoangson@gmail.com](https://avatars3.githubusercontent.com/u/4572510?v=3&s=460)
-		";
-		$_POST["input_markdown"] = $string;
-	}
-	$text		= $parsedown->text($string);
+* Super Fast
+* [GitHub flavored](https://help.github.com/articles/github-flavored-markdown)
+* Extensible
+* Tested in 5.3 to 5.6
+* [Markdown Extra extension](https://github.com/erusev/parsedown-extra)
 
+### Installation
 
-$string_sample	= file_get_contents("data_sample.php");
-$text_sample	= $parsedown->text($string_sample);
+Include `Parsedown.php` or install [the composer package](https://packagist.org/packages/erusev/parsedown).
+
+### Example
+
+``` php
+$Parsedown = new Parsedown();
+
+echo $Parsedown->text('Hello _Parsedown_!'); # prints: <p>Hello <em>Parsedown</em>!</p>
+```
+
+More examples in [the wiki](https://github.com/erusev/parsedown/wiki/) and in [this video tutorial](http://youtu.be/wYZBY8DEikI).
+
+### Questions
+
+**How does Parsedown work?**
+
+It tries to read Markdown like a human. First, it looks at the lines. It’s interested in how the lines start. This helps it recognise blocks. It knows, for example, that if a line start with a `-` then it perhaps belong to a list. Once it recognises the blocks, it continues to the content. As it reads, it watches out for special characters. This helps it recognise inline elements (or inlines).
+
+We call this approach \"line based\". We believe that Parsedown is the first Markdown parser to use it. Since the release of Parsedown, other developers have used the same approach to develop other Markdown parsers in PHP and in other languages.
+
+**Is it compliant with CommonMark?**
+
+It passes most of the CommonMark tests. Most of the tests that don't pass deal with cases that are quite uncommon. Still, as CommonMark matures, compliance should improve.
+
+**Who uses it?**
+
+[phpDocumentor](http://www.phpdoc.org/), [October CMS](http://octobercms.com/), [Bolt CMS](http://bolt.cm/), [Kirby CMS](http://getkirby.com/), [Grav CMS](http://getgrav.org/), [Statamic CMS](http://www.statamic.com/),  [RaspberryPi.org](http://www.raspberrypi.org/) and [more](https://www.versioneye.com/php/erusev:parsedown/references).
+
+**How can I help?**
+
+Use it, star it, share it and if you feel generous, [donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=528P3NZQMP8N2).
+
+");
 ?>
 
 <!DOCTYPE html>
@@ -65,31 +94,7 @@ $text_sample	= $parsedown->text($string_sample);
 	</head>
 	<body>
 		<div class="container">
-
-
-			<section>
-				<h1>Part 1: Input in textarea</h1>
-				<form action="" method="POST" role="form">
-					<legend>Markdown</legend>
-					<div class="form-group">
-						<label for="">label</label>
-						<textarea class="form-control" id="" name="input_markdown" placeholder="Textarea field" style="height:250px;"><?php echo $_POST["input_markdown"]; ?></textarea>
-					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</form>
-
-				<h2>Preview</h2>
-				<div class="well"><?php echo $text ?></div>
-
-			</section>
-
-
-			<hr>
-			<section>
-				<h1>Part 2: Data sample in file data_sample.php</h1>
-				<div class="well"><?php echo $text_sample ?></div>
-			</section>
-			
+			<?php echo $text ?>
 		</div>
 
 		<!-- jQuery -->
