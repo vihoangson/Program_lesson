@@ -51,14 +51,16 @@
 					<div class="col-lg-12">
 						<div class="col-md-3">
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">About us</a></li>
-								<li><a href="#">Blog</a></li>
+								<li><a href="http://vihoangson.blogspot.com" target="_blank">Vihoangson.blogspot.com</a></li>
+								<li><a href="http://vihoangson.wordpress.com" target="_blank">Vihoangson.wordpress.com</a></li>
+								<li><a href="http://vihanvietnam.blogspot.com" target="_blank">Vihanvietnam.blogspot.com</a></li>
+
 							</ul>
 						</div>
 						<div class="col-md-3">
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="http://nangluctieman.com" target="_blank">Nangluctieman</a></li>
-								<li><a href="http://banhsusu.com" target="_blank">Nanhsusu</a></li>
+								<li><a href="http://banhsusu.com" target="_blank">Banhsusu</a></li>
 								<li><a href="http://dacsandaklak.vus.vn" target="_blank">Dacsandaklak</a></li>
 							</ul>
 						</div>
