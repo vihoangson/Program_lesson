@@ -1,4 +1,5 @@
 <?php
+phpinfo();
 /**
 	* Lession 1:Upload file ajax
 	* @github https://github.com/vihoangson/Program_lesson.git
@@ -167,6 +168,7 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 				$("body").prepend('<div class="alert alert-info saved-clipboard" role="alert">Save to clipboard !</div>');
 				$(".alert").delay(1000).fadeOut(500);
 			}
+
 			function copyToClipboard(value) {
 				var $temp = $("<input type=''>");
 				$("body").append($temp);
