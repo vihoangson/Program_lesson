@@ -1,21 +1,9 @@
 <?php
 /**
-	* Lesson 3: Markdow
-	* Markdown là gì?
-	* Về định nghĩa thì Markdown là một ngôn ngữ đánh dấu. Wtf?? Thế ngôn ngữ đánh dấu là gì? Ngôn ngữ đánh dấu rất đơn giản là một cách để làm cho một vài đoạn văn bản có ý nghĩa khác với các đoạn khác.
-	* VD: Đây là một chữ nghiêng.
-	* Rõ ràng chúng ta đã đánh dấu chữ "nghiêng" có ý nghĩa khác với các chữ còn lại trong câu. Ngôn ngữ đánh dấu chỉ đơn giản là vậy thôi.
-	* Có nhiều kiểu ngôn ngữ đánh dấu khác nhau phục vụ nhiều mục đích khác nhau. Trong đó loại nổi tiếng nhất là HTML (và XHTML) dùng cho web.
-	* @github https://github.com/vihoangson/Program_lesson.git
-	*
-	* **Nguồn tham khảo**
-	* http://nguyenthethang.com/2013/08/16/keyword-ngon-ngu-markdown-la-gi-what-is-markdown/
-	* http://ngochin.com/2013/01/03/markdown/
+	* Lesson 4: ImageMagick
 	* @author Vi Hoàng Sơn <vihoangson@gmail.com>
 **/
-
 ?>
-
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
@@ -41,11 +29,12 @@
 				<p><img src="https://vihoangson.files.wordpress.com/2015/08/2015-08-12-10_25_07-imagemagick-tc3acm-ve1bb9bi-google.jpg" style="width:430px"></p>
 			</center>
 
-			<center><img src="show_img.php?file=img.jpg"></center>
+			<section>
+				<h1>View crop image by file show_img.php</h1>
+				<center><img src="show_img.php?file=img.jpg"></center>
+			</section>
 
 			<center><a href="/" class="btn btn-lg btn-default"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Back to home page</a></center>
-
-
 		</div>
 
 		<!-- jQuery -->
