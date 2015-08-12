@@ -4,7 +4,6 @@
 	* @github https://github.com/vihoangson/Program_lesson.git
 	* @author Vi Hoàng Sơn <vihoangson@gmail.com>
 **/
-
 //define("PATH_UPLOAD", $_SERVER["DOCUMENT_ROOT"]."/Lesson_1/store/");
 define("PATH_UPLOAD", "store/");
 if(!file_exists(PATH_UPLOAD)){
@@ -112,6 +111,8 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 				<tr>
 					<th></th>
 					<th></th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -125,7 +126,7 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 							echo '
 							<tr>
 								<td><input type="checkbox" name="filename[]" value="'.$value.'"></td>
-								<td><img src="'.PATH_UPLOAD.$value.'" style="width:50px;"></td>
+								<td><img src="show_img.php?file='.$value.'" style="width:50px;"></td>
 								<td>'.$value.'</td>
 								<td>
 
@@ -154,6 +155,8 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 		<button type="submit" class="btn btn-danger">Delete</button>
 		</form>
 
+
+		<center><a href="/" class="btn btn-lg btn-default"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Back to home page</a></center>
 
 	</div>
 		<!-- jQuery -->

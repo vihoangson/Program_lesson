@@ -25,6 +25,7 @@
 						<li><a href="Lesson_1">Lesson 1</a></li>
 						<li><a href="Lesson_2">Lesson 2</a></li>
 						<li><a href="Lesson_3">Lesson 3</a></li>
+						<li><a href="Lesson_4">Lesson 4</a></li>
 					</ul>
 				</div>
 			</section>
@@ -44,6 +45,15 @@
 					</li>
 				</ul>
 			</section>
+
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Extentions</h3>
+				</div>
+				<div class="panel-body">
+					<a href="http://santo-vihoangson.rhcloud.com/Extentions/phpinfo.php" target="_blank">Php info</a>
+				</div>
+			</div>
 
 			<div class="container text-center">
 				<hr />

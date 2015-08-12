@@ -101,6 +101,7 @@ if(!empty($_POST["post"])){
 			</center>
 		<?php $lesson2->show_form_edit(); ?>
 		<div id="load_result_box"><?php $lesson2->show_result(); ?></div>
+		
 		<center><a href="/" class="btn btn-lg btn-default"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Back to home page</a></center>
 
 	</div>
