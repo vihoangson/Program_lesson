@@ -38,7 +38,7 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 }
 
 ?>
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 	<head>
 		<meta charset="utf-8">
@@ -47,7 +47,7 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 		<title>Lesson 1: Test ajax</title>
 
 		<!-- Bootstrap CSS -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,6 +69,12 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 				height: 11px;
 				background: #A3A3AB;
 				display: block;
+			}
+			.alert.alert-info.saved-clipboard {
+				position: fixed;
+				bottom: 20px;
+				left: 20px;
+				width: 219px;
 			}
 		</style>
 	</head>
@@ -115,18 +121,40 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 						if($value == "." ||$value == "..") {
 							continue;
 						}
-						echo '
-						<tr>
-							<td><input type="checkbox" name="filename[]" value="'.$value.'"></td>
-							<td>'.$value.'</td>
-						</tr>
-						';
+						if(file_exists(PATH_UPLOAD.$value)){
+							echo '
+							<tr>
+								<td><input type="checkbox" name="filename[]" value="'.$value.'"></td>
+								<td><img src="'.PATH_UPLOAD.$value.'" style="width:50px;"></td>
+								<td>'.$value.'</td>
+								<td>
+
+									<div class="input-group">
+										<input type="text" class="form-control" id="input_'.$key.'" placeholder="Search" value="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'">
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_'.$key.'\');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+										</span>
+									</div>
+									<div class="input-group">
+										<input type="text" class="form-control" id="input_img_'.$key.'" placeholder="Search" value=\'<img src="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'"> \'>
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_img_'.$key.'\');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+										</span>
+									</div>
+								</td>
+
+							</tr>
+							';
+						}
+
 					}
 				?>
 			</tbody>
 		</table>
 		<button type="submit" class="btn btn-danger">Delete</button>
 		</form>
+
+
 	</div>
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
@@ -134,6 +162,19 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 		<script>
+			function add_clipboard(e){
+				copyToClipboard($(e).val());
+				$("body").prepend('<div class="alert alert-info saved-clipboard" role="alert">Save to clipboard !</div>');
+				$(".alert").delay(1000).fadeOut(500);
+			}
+			function copyToClipboard(value) {
+				var $temp = $("<input type=''>");
+				$("body").append($temp);
+				$temp.val(value).select();
+				document.execCommand("copy");
+				$temp.remove();
+			}
+
 			$("input[name='input_file[]']").change(function(){
 				$(this).closest('form').submit();
 			});
@@ -192,7 +233,6 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 					}
 				}
 			}
-
 		</script>
 	</body>
 </html>
