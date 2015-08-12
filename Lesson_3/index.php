@@ -13,11 +13,10 @@
 	* http://ngochin.com/2013/01/03/markdown/
 	* @author Vi Hoàng Sơn <vihoangson@gmail.com>
 **/
-require_once("class/Parsedown.php");
-$parsedown					= new Parsedown;
-	$parsedown	= new Parsedown;
-	$string		= $_POST["input_markdown"];
-	$text		= $parsedown->text($string);
+	require_once("class/Parsedown.php");
+	$parsedown = new Parsedown;
+	$string    = (isset($_POST["input_markdown"])?$_POST["input_markdown"]:"");
+	$text      = $parsedown->text($string);
 	if(!$string){
 		$string = "
 Heading
@@ -25,16 +24,16 @@ Heading
 
 Sub-heading
 -----------
- 
+
 ### Another deeper heading
- 
+
 Paragraphs are separated
 by a blank line.
 
-Leave 2 spaces at the end of a line to do a  
+Leave 2 spaces at the end of a line to do a
 line break
 
-Text attributes *italic*, **bold**, 
+Text attributes *italic*, **bold**,
 `monospace`, ~~strikethrough~~ .
 
 A [link](http://example.com).
