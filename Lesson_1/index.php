@@ -1,5 +1,4 @@
 <?php
-phpinfo();
 /**
 	* Lession 1:Upload file ajax
 	* @github https://github.com/vihoangson/Program_lesson.git
