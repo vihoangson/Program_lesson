@@ -8,12 +8,22 @@ require_once("class/lesson5.php");
 $sqlite = new My_sqlite;
 $lesson5 = new Lesson5($sqlite);
 if($_POST["ajax"]){
-	$text = mysql_real_escape_string($_POST["text"]);
+	//
+	// Security mod filter variable before save (true|false)
+	//
+	$security_mod = false;
+
+	if($security_mod){
+		$text = mysql_real_escape_string($_POST["text"]);
+	}else{
+		$text = ($_POST["text"]);
+	}
+
 	$sql = "SELECT * FROM text_tb where text_id=1 ";
 	$rs = $sqlite->query($sql);
 	$data = ($sqlite->fetchAll($rs));
 	if(count($data)==0){
-		$sql='INSERT INTO text_tb("text_id","text") VALUES (1,"'.$text.'");';
+		$sql='INSERT INTO text_tb("text_id","text_c") VALUES (1,"'.$text.'");';
 	}else{
 		$sql= 'UPDATE text_tb SET	text_c	= "'.$text.'"	WHERE text_id=1';
 	}
