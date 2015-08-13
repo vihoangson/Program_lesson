@@ -12,8 +12,6 @@ if($_POST["ajax"]){
 	// Security mod filter variable before save (true|false)
 	//
 	$security_mod = true;
-echo ($_POST["text"]);
-die;
 	if($security_mod){
 		$text = base64_encode($_POST["text"]);
 	}else{
