@@ -74,6 +74,8 @@ if($_POST["ajax"]){
 				<div style="margin-top:10px;">
 					<button onclick="doneTyping()" type="button" class="top5 btn btn-default"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Save (Ctrl+S)</button>
 				</div>
+
+				<center><a href="/" class="btn btn-lg btn-default"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Back to home page</a></center>
 			</section>
 		</div>
 
@@ -121,7 +123,7 @@ if($_POST["ajax"]){
 							alert("error");
 						}else{
 							if($(".alert").length==0){
-								$("body").prepend('<div class="alert alert-info saved-clipboard" role="alert">Save to clipboard !</div><style>.alert.alert-info.saved-clipboard {position: fixed;top: 20px;right: 20px;width: 219px;}</style>');
+								$("body").prepend('<div class="alert alert-info saved-clipboard" role="alert">Save to database !</div><style>.alert.alert-info.saved-clipboard {position: fixed;top: 20px;right: 20px;width: 219px;}</style>');
 							}else{
 								$(".alert").fadeIn(500);
 							}
