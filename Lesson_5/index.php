@@ -68,6 +68,7 @@ if($_POST["ajax"]){
 				<div class="well">
 					<p>ctrl+S: To save in DB</p>
 					<p>Sau 3s không nhập sẽ tự động lưu vào DB</p>
+					<p>PhpSqliteAdmin - <a href="db/phpliteadmin.php" target="_blank">View DB</a></p>
 				</div>
 				<textarea id="myInput" class="form-control" style="height:400px"><?php echo $str; ?></textarea>
 
