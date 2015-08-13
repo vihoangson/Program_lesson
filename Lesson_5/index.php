@@ -11,23 +11,23 @@ if($_POST["ajax"]){
 	//
 	// Security mod filter variable before save (true|false)
 	//
-	$security_mod = false;
-
+	$security_mod = true;
+echo ($_POST["text"]);
+die;
 	if($security_mod){
-		$text = mysql_real_escape_string($_POST["text"]);
+		$text = base64_encode($_POST["text"]);
 	}else{
 		$text = ($_POST["text"]);
 	}
 
-	$sql = "SELECT * FROM text_tb where text_id=1 ";
-	$rs = $sqlite->query($sql);
-	$data = ($sqlite->fetchAll($rs));
+	$sql	= "SELECT * FROM text_tb where text_id=1 ";
+	$rs		= $sqlite->query($sql);
+	$data	= ($sqlite->fetchAll($rs));
 	if(count($data)==0){
 		$sql='INSERT INTO text_tb("text_id","text_c") VALUES (1,"'.$text.'");';
 	}else{
 		$sql= 'UPDATE text_tb SET	text_c	= "'.$text.'"	WHERE text_id=1';
 	}
-
 	if(!$sqlite->exec($sql)){
 		$error=true;
 		echo 0;
@@ -37,9 +37,11 @@ if($_POST["ajax"]){
 	}
 	die;
 }else{
-	$sql = "SELECT * FROM text_tb where text_id=1 ";
-	$rs = $sqlite->query($sql);
-	$data = ($sqlite->fetchAll($rs));
+	$sql	= "SELECT * FROM text_tb where text_id=1 ";
+	$rs		= $sqlite->query($sql);
+	$data	= ($sqlite->fetchAll($rs));
+	$str	= base64_decode(($data[0]["text_c"]));
+	//
 }
 ?>
 
@@ -65,8 +67,15 @@ if($_POST["ajax"]){
 
 			<section>
 				<h1>Auto save by Jquery</h1>
-				<div class="well">ctrl+S: To save in DB</div>
-				<textarea id="myInput" class="form-control" style="height:400px"><?php echo $data[0]["text_c"] ?></textarea>
+				<div class="well">
+					<p>ctrl+S: To save in DB</p>
+					<p>Sau 3s không nhập sẽ tự động lưu vào DB</p>
+				</div>
+				<textarea id="myInput" class="form-control" style="height:400px"><?php echo $str; ?></textarea>
+
+				<div style="margin-top:10px;">
+					<button onclick="doneTyping()" type="button" class="top5 btn btn-default"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Save (Ctrl+S)</button>
+				</div>
 			</section>
 		</div>
 
@@ -78,13 +87,17 @@ if($_POST["ajax"]){
 			$('#myInput').focus();
 			//setup before functions
 			var typingTimer;                //timer identifier
-			var doneTypingInterval = 1000;  //time in ms, 1 second for example
+			var doneTypingInterval = 3000;  //time in ms, 1 second for example
 
 			//on keyup, start the countdown
-			$('#myInput').keyup(function(){
-				clearTimeout(typingTimer);
-				if ($('#myInput').val) {
-					typingTimer = setTimeout(doneTyping, doneTypingInterval);
+			$('#myInput').keydown(function(e){
+				if ((e.which == 83 || e.which == 115) && e.ctrlKey ==true) {
+					console.log("in"+$.now());
+				}else{
+					clearTimeout(typingTimer);
+					if ($('#myInput').val) {
+						typingTimer = setTimeout(doneTyping, doneTypingInterval);
+					}
 				}
 			});
 
@@ -105,6 +118,7 @@ if($_POST["ajax"]){
 						data: {"text":$("#myInput").val(),"ajax":1}
 					})
 					.done(function(data) {
+						console.log(data);
 						if(data==0){
 							alert("error");
 						}else{
