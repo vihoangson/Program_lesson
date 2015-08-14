@@ -29,12 +29,31 @@ if(!empty($_POST["form"]) && $_POST["form"] == "uploadfile"){
 	}
 	exit;
 }
+if($_POST["submit"] == "download"){
+	if(true){
+		$files = $_POST["filename"];
+		$path_tmp = PATH_UPLOAD;
+		$zipname		= 'download_all_file.zip';
+		if(file_exists($path_tmp.$zipname)) unlink($path_tmp.$zipname);
+		$zip			= new ZipArchive;
+		$zip->open($path_tmp.$zipname, ZipArchive::CREATE);
+		foreach ($files as $file) {
+			$zip->addFile($path_tmp.$file,$file);
+		}
+		$zip->close();
+		header('Content-Type: application/zip');
+		header('Content-disposition: attachment; filename='.$zipname);
+		header('Content-Length: ' . filesize($path_tmp.$zipname));
+		readfile($path_tmp.$zipname);
+	}
+}
 
-if(!empty($_POST["form"]) && $_POST["form"] == "action"){
+if(!empty($_POST["form"]) && $_POST["form"] == "action" && $_POST["submit"] == "delete"){
 	foreach ($_POST["filename"] as $key => $value) {
 		unlink(PATH_UPLOAD.$value);
 	}
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -209,9 +228,10 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 				</tbody>
 			</table>
 
-			<button type="submit" class="btn btn-danger">Delete</button> 
-			<button type="button" class="btn btn-warning" onclick='$("input[type=checkbox]").prop("checked",true);'>Check all</button> 
-			<button type="button" class="btn btn-warning" onclick='$("input[type=checkbox]").prop("checked",false);'>Uncheck all</button> 
+			<button type="submit" class="btn btn-danger" name="submit" value="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</button> 
+			<button type="submit" class="btn btn-danger" name="submit" value="download"><span class="glyphicon glyphicon-save" aria-hidden="true"></span> Download All</button> 
+			<button type="button" class="btn btn-warning" onclick='$("input[type=checkbox]").prop("checked",true);'><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> Check all</button> 
+			<button type="button" class="btn btn-warning" onclick='$("input[type=checkbox]").prop("checked",false);'><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Uncheck all</button> 
 		</form>
 
 		<center><a href="/" class="btn btn-lg btn-default"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Back to home page</a></center>
