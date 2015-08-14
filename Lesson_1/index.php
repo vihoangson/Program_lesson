@@ -103,58 +103,114 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 			<input type="hidden" name="post" value="1">
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
+		<hr>
+		<div class="well">
+				<p><a href="#image_type">Danh sách file hình ảnh</a></p>
+				<p><a href="#other_type"> Các loại file khác</a></p>
+		</div>
+
 		<form action="" method="post" id="form_action">
 			<input type="hidden" name="form" value="action">
-			<h3>Danh sách file</h3>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-					$array_d = scandir(PATH_UPLOAD);
-					foreach ($array_d as $key => $value) {
-						if($value == "." ||$value == "..") {
-							continue;
+
+
+			<h3  id="image_type">Danh sách file hình ảnh</h3>
+			<p><a href="#">Go top</a></p>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						$array_d = scandir(PATH_UPLOAD);
+						foreach ($array_d as $key => $value) {
+							if($value == "." ||$value == "..") {
+								continue;
+							}
+							if(file_exists(PATH_UPLOAD.$value) && getimagesize(PATH_UPLOAD.$value)){
+								echo '
+								<tr>
+									<td><input type="checkbox" name="filename[]" value="'.$value.'"></td>
+									<td><img src="show_img.php?file='.$value.'" style="width:50px;"></td>
+									<td>'.$value.'</td>
+									<td>
+
+										<div class="input-group">
+											<input type="text" class="form-control" id="input_'.$key.'" placeholder="Search" value="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_'.$key.'\');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+											</span>
+										</div>
+										<div class="input-group">
+											<input type="text" class="form-control" id="input_img_'.$key.'" placeholder="Search" value=\'<img src="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'"> \'>
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_img_'.$key.'\');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+											</span>
+										</div>
+									</td>
+
+								</tr>
+								';
+							}else{
+								$list_otherfile[]=$value;
+							}
+
 						}
-						if(file_exists(PATH_UPLOAD.$value)){
-							echo '
-							<tr>
-								<td><input type="checkbox" name="filename[]" value="'.$value.'"></td>
-								<td><img src="show_img.php?file='.$value.'" style="width:50px;"></td>
-								<td>'.$value.'</td>
-								<td>
+					?>
+				</tbody>
+			</table>
 
-									<div class="input-group">
-										<input type="text" class="form-control" id="input_'.$key.'" placeholder="Search" value="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'">
-										<span class="input-group-btn">
-											<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_'.$key.'\');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
-										</span>
-									</div>
-									<div class="input-group">
-										<input type="text" class="form-control" id="input_img_'.$key.'" placeholder="Search" value=\'<img src="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'"> \'>
-										<span class="input-group-btn">
-											<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_img_'.$key.'\');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
-										</span>
-									</div>
-								</td>
 
-							</tr>
-							';
+			<h3 id="other_type"> Các loại file khác</h3>
+			<p><a href="#">Go top</a></p>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						foreach ($list_otherfile as $key => $value) {
+							if($value == "." ||$value == "..") {
+								continue;
+							}
+							if(file_exists(PATH_UPLOAD.$value)){
+								echo '
+								<tr>
+									<td><input type="checkbox" name="filename[]" value="'.$value.'"></td>
+									<td></td>
+									<td>'.$value.'</td>
+									<td>
+
+										<div class="input-group">
+											<input type="text" class="form-control" id="input_'.$key.'" placeholder="Search" value="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_'.$key.'\');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+											</span>
+										</div>
+									</td>
+
+								</tr>
+								';
+							}else{
+								$list_otherfile[]=PATH_UPLOAD.$value;
+							}
+
 						}
+					?>
+				</tbody>
+			</table>
 
-					}
-				?>
-			</tbody>
-		</table>
-		<button type="submit" class="btn btn-danger">Delete</button>
+			<button type="submit" class="btn btn-danger">Delete</button>
 		</form>
-
 
 		<center><a href="/" class="btn btn-lg btn-default"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Back to home page</a></center>
 
