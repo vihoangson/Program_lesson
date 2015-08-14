@@ -209,10 +209,15 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action"){
 				</tbody>
 			</table>
 
-			<button type="submit" class="btn btn-danger">Delete</button>
+			<button type="submit" class="btn btn-danger">Delete</button> 
+			<button type="button" class="btn btn-warning" onclick='$("input[type=checkbox]").prop("checked",true);'>Check all</button> 
+			<button type="button" class="btn btn-warning" onclick='$("input[type=checkbox]").prop("checked",false);'>Uncheck all</button> 
 		</form>
 
 		<center><a href="/" class="btn btn-lg btn-default"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Back to home page</a></center>
+
+		
+
 
 	</div>
 		<!-- jQuery -->
