@@ -1,3 +1,13 @@
+<?php
+//Testmod to login
+$security_mod = false;
+if($security_mod){
+	session_start();
+	if($_SESSION["login"]!=1){
+		header("Location:login.php");
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="vi">
 	<head>
@@ -58,7 +68,11 @@
 					<h3 class="panel-title">Extentions</h3>
 				</div>
 				<div class="panel-body">
-					<a href="/Extentions/phpinfo.php" target="_blank">Php info</a>
+					<ul>
+						<li><a href="/Extentions/phpinfo.php" target="_blank">Php info</a></li>
+						<li><a href="/Extentions/bootstrap.php" target="_blank">Bootstrap</a></li>
+						<li><a href="https://vihoangson.wordpress.com/wp-admin/upload.php" target="_blank">Upload images___vihoangson@gmail.com__TfJN*CF#7Q##7__</a></li>
+					</ul>
 				</div>
 			</div>
 
@@ -90,8 +104,9 @@
 						</div>
 						<div class="col-md-3">
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="http://vihoangson.vus.vn" target="_blank">Vihoangson</a></li>
+								<li><a href="http://vihoangson.vus.vn" target="_blank">Vihoangson.vus.vn</a></li>
 								<li><a href="http://tainangtieman.com" target="_blank">Tainangtieman</a></li>
+								<li><a href="http://bootsnipp.com/buttons" target="_blank">Build button</a></li>
 							</ul>
 						</div>
 					</div>
@@ -108,10 +123,17 @@
 				</div>
 			</div>
 
-		</div>
+		</div><form class="form-horizontal">
+<fieldset>
+
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			if(localStorage["login"]!=1){
+				//location.href = 'login.php';
+			}
+		</script>
 	</body>
 </html>

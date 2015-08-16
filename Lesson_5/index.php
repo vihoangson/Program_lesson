@@ -62,7 +62,9 @@ if($_POST["ajax"]){
 	</head>
 	<body>
 		<div class="container">
-
+			<center>
+				<p><img src="https://vihoangson.files.wordpress.com/2015/08/2015-08-16-10_04_25-lesson-5-tc3acm-ve1bb9bi-google.png" style="width:430px"></p>
+			</center>
 			<section>
 				<h1>Auto save by Jquery</h1>
 				<div class="well">
