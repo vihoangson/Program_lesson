@@ -1,18 +1,23 @@
 <?php
+if(class_exists("imagick")){
+	$type_image	= "imagemagick"; //(common || imagemagick)
+}else{
 	$type_image	= "common"; //(common || imagemagick)
-	$filename		= "store/".$_GET["file"];
+}
+	$root_path = substr($_SERVER['SCRIPT_FILENAME'], 0, strrpos($_SERVER['SCRIPT_FILENAME'], "/") );
+	$filename		= $root_path ."/store/".$_GET["file"];
 	$width		= 80;
 	$height		= 80;
 
 	switch($type_image){
 		case "imagemagick":
-		$im = new imagick($filename);
-		$im->cropThumbnailImage( $width, $height );
-		header("Content-Type: image/jpg");
-		echo $im->getImageBlob();
+			$im = new Imagick($filename);
+			$im->cropThumbnailImage( $width, $height );
+			header("Content-Type: image/jpg");
+			echo $im->getImageBlob();
 		break;
 		case "common":
-		cropImage_common($filename,$width,$height);
+			cropImage_common($filename,$width,$height);
 		break;
 	}
 

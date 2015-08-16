@@ -27,6 +27,7 @@
 						<li><a href="Lesson_3">Lesson 3</a></li>
 						<li><a href="Lesson_4">Lesson 4</a></li>
 						<li><a href="Lesson_5">Lesson 5</a></li>
+						<li><a href="Lesson_6">Lesson 6</a></li>
 					</ul>
 				</div>
 			</section>
@@ -44,6 +45,11 @@
 							Program_lesson - PHP in Openshift
 						</a>
 					</li>
+					<li>
+						<a href="http://program_lesson.vus.vn/" target="_blank">
+							Program_lesson - PHP in Digital Ocean
+						</a>
+					</li>
 				</ul>
 			</section>
 
@@ -52,7 +58,7 @@
 					<h3 class="panel-title">Extentions</h3>
 				</div>
 				<div class="panel-body">
-					<a href="http://santo-vihoangson.rhcloud.com/Extentions/phpinfo.php" target="_blank">Php info</a>
+					<a href="/Extentions/phpinfo.php" target="_blank">Php info</a>
 				</div>
 			</div>
 

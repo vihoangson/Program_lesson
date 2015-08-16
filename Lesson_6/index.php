@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>upload</title>
+	<title>Upload by Drop Zone</title>
 	<link rel="stylesheet" href="">
 	<style type="text/css">
 		body{
@@ -26,8 +26,10 @@
 
 </head>
 <body>
+	<input type="password" id="password">
 	<div id="upload"></div>
 	<div class="dropzone" id="dropzone">Thả files vào đây để tải lên</div>
+	<script src="//code.jquery.com/jquery.js"></script>
 	<script type="text/javascript">
 		(function(){
 			var dropzone=document.getElementById('dropzone');
@@ -41,8 +43,8 @@
 				var frm_data=new FormData();
 				for (var i = 0; i < files.length; i++) {
 					frm_data.append('file[]',files[i]);
+					frm_data.append('password',$("#password").val());
 				}
-
 
 				var xhr=new XMLHttpRequest();
 				xhr.open('post', 'lesson_6_process.php');
