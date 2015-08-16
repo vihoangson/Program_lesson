@@ -3,7 +3,7 @@
 		public function __construct()
 		{
 			define("PATH_UPLOAD", $_SERVER["DOCUMENT_ROOT"]."/Lesson_5/db/");
-			$this->open(PATH_UPLOAD.'lesson_5.db.sqlite');
+			$this->open(PATH_UPLOAD.'lesson_5.db.sqlites');
 		}
 
 		public function fetchAll($result){
