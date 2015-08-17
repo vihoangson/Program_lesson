@@ -14,6 +14,7 @@ if(!file_exists(PATH_UPLOAD)){
 if(!empty($_POST["form"]) && $_POST["form"] == "uploadfile"){
 	if(is_array($_FILES["input_file"]["name"])){
 		foreach ($_FILES["input_file"]["name"] as $key => $value) {
+			if(preg_match("/\.php$/", $value)){continue;}
 			if(@move_uploaded_file( $_FILES["input_file"]["tmp_name"][$key],PATH_UPLOAD.$_FILES["input_file"]["name"][$key])){
 				echo "Upload finish: ".$_FILES["input_file"]["name"][$key]."\n";
 			}else{
@@ -30,22 +31,20 @@ if(!empty($_POST["form"]) && $_POST["form"] == "uploadfile"){
 	exit;
 }
 if($_POST["submit"] == "download"){
-	if(true){
-		$files = $_POST["filename"];
-		$path_tmp = PATH_UPLOAD;
-		$zipname		= 'download_all_file.zip';
-		if(file_exists($path_tmp.$zipname)) unlink($path_tmp.$zipname);
-		$zip			= new ZipArchive;
-		$zip->open($path_tmp.$zipname, ZipArchive::CREATE);
-		foreach ($files as $file) {
-			$zip->addFile($path_tmp.$file,$file);
-		}
-		$zip->close();
-		header('Content-Type: application/zip');
-		header('Content-disposition: attachment; filename='.$zipname);
-		header('Content-Length: ' . filesize($path_tmp.$zipname));
-		readfile($path_tmp.$zipname);
+	$files = $_POST["filename"];
+	$path_tmp = PATH_UPLOAD;
+	$zipname		= 'download_all_file.zip';
+	if(file_exists($path_tmp.$zipname)) unlink($path_tmp.$zipname);
+	$zip			= new ZipArchive;
+	$zip->open($path_tmp.$zipname, ZipArchive::CREATE);
+	foreach ($files as $file) {
+		$zip->addFile($path_tmp.$file,$file);
 	}
+	$zip->close();
+	header('Content-Type: application/zip');
+	header('Content-disposition: attachment; filename='.$zipname);
+	header('Content-Length: ' . filesize($path_tmp.$zipname));
+	readfile($path_tmp.$zipname);
 }
 
 if(!empty($_POST["form"]) && $_POST["form"] == "action" && $_POST["submit"] == "delete"){
@@ -161,13 +160,13 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action" && $_POST["submit"] == "
 										<div class="input-group">
 											<input type="text" class="form-control" id="input_'.$key.'" placeholder="Search" value="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'">
 											<span class="input-group-btn">
-												<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_'.$key.'\');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+												<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_'.$key.'\');"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
 											</span>
 										</div>
 										<div class="input-group">
 											<input type="text" class="form-control" id="input_img_'.$key.'" placeholder="Search" value=\'<img src="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'"> \'>
 											<span class="input-group-btn">
-												<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_img_'.$key.'\');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+												<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_img_'.$key.'\');"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
 											</span>
 										</div>
 									</td>
@@ -212,7 +211,7 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action" && $_POST["submit"] == "
 										<div class="input-group">
 											<input type="text" class="form-control" id="input_'.$key.'" placeholder="Search" value="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'">
 											<span class="input-group-btn">
-												<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_'.$key.'\');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+												<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_'.$key.'\');"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
 											</span>
 										</div>
 									</td>
