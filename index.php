@@ -107,6 +107,7 @@ if($security_mod){
 								<li><a href="http://vihoangson.vus.vn" target="_blank">Vihoangson.vus.vn</a></li>
 								<li><a href="http://tainangtieman.com" target="_blank">Tainangtieman</a></li>
 								<li><a href="http://bootsnipp.com/buttons" target="_blank">Build button</a></li>
+								<li><a href="http://loading.io/" target="_blank">Loading.io</a></li>
 							</ul>
 						</div>
 					</div>
