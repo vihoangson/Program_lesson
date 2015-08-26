@@ -5,8 +5,7 @@ if($_GET["op"]=="logout"){
 	header("Location:/");
 }
 if($_GET["op"]=="s"){
-	//echo str_shuffle("nhanhailannick");
-	echo strrev("123456789");
+	echo "<h1>".strrev("nhanhailannick")."</h1>";
 	die;
 }
 if(
