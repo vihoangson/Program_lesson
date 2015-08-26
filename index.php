@@ -1,6 +1,6 @@
 <?php
 //Testmod to login
-$security_mod = false;
+$security_mod = true;
 if($security_mod){
 	session_start();
 	if($_SESSION["login"]!=1){
@@ -27,9 +27,12 @@ if($security_mod){
 		<![endif]-->
 	</head>
 	<body>
-		<div class="container">
+		<div class="container" style="position:relative;">
 			<section>
 				<h1>Program Lesson</h1>
+				<div style="position:absolute; top:0;right:0;">
+					<a href="/login.php?op=logout" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-off"></span> Logout</a>
+				</div>
 				<div class="well">
 					<ul>
 						<li><a href="Lesson_1">Lesson 1</a></li>
@@ -38,6 +41,18 @@ if($security_mod){
 						<li><a href="Lesson_4">Lesson 4</a></li>
 						<li><a href="Lesson_5">Lesson 5</a></li>
 						<li><a href="Lesson_6">Lesson 6</a></li>
+					</ul>
+				</div>
+			</section>
+			<hr>
+			<section>
+				<h1>Project test</h1>
+				<div style="position:absolute; top:0;right:0;">
+					<a href="/login.php?op=logout" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-off"></span> Logout</a>
+				</div>
+				<div class="well">
+					<ul>
+						<li><a href="Test_case_1">Test case 1</a></li>
 					</ul>
 				</div>
 			</section>
@@ -100,6 +115,7 @@ if($security_mod){
 								<li><a href="http://hocboi.vus.vn" target="_blank">Hocboi</a></li>
 								<li><a href="http://phapthi.vus.vn" target="_blank">Phapthi</a></li>
 								<li><a href="http://santo.vus.vn" target="_blank">Santo</a></li>
+								<li><a href="http://www.server-world.info/en/note?os=CentOS_7&p=openstack_kilo&f=1" target="_blank">Server world</a></li>
 							</ul>
 						</div>
 						<div class="col-md-3">

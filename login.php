@@ -1,12 +1,18 @@
-<?php 
+<?php
 session_start();
-if($_POST){
-	print_r($_POST);
+if($_GET["op"]=="logout"){
+	unset($_SESSION["login"]);
+	header("Location:/");
+}
+if($_GET["op"]=="s"){
+	//echo str_shuffle("nhanhailannick");
+	echo strrev("123456789");
+	die;
 }
 if(
 	$_POST["Username"]=="root"
 	&&
-	$_POST["Password"]==base64_decode("!@#$!@#!$@!#t2341!@41#!$!@#fa!@$^#$%fa^#fas$&^#$SasaERTWasdaE341R415TWERR!@$%!@1234123$!@342134!@3412#4123412#4")
+	$_POST["Password"]=="santosanto"
 ){
 	$_SESSION["login"]=1;
 	header("Location: /");
@@ -88,7 +94,7 @@ if(
 
 					<input type="text" class="form-control" name="Username" placeholder="Username" required="" autofocus="" />
 					<input type="password" class="form-control" name="Password" placeholder="Password" required=""/>
-
+					<p><a href="/login.php?op=s" target="_blank">Forget password</a></p>
 					<button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>
 				</form>
 			</div>
