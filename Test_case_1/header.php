@@ -37,6 +37,16 @@ require("class/db.php");
 				float:left;
 				margin-right:10px;
 			}
+			.pagination_box li {
+				float: left;
+			}
+
+			.pagination_box li a {
+				padding: 2px;
+				display: block;
+				padding: 4px;
+				text-decoration: none;
+			}
 		</style>
 	</head>
 	<body class="right-sidebar">

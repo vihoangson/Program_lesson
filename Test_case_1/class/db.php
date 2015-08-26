@@ -33,22 +33,82 @@ class Db_csv{
 		return $this->data;
 	}
 
-	function getAllDataPager($limit=10,$offset=0){
-		$value = array_values($this->data);
-		$all_row = count($value);
-		$all_page = round($all_row/$limit);
-		$this->pagination = new pagination;
+	function getAllDataPager($per_page=10,$page=0){
+		// $offset		= $page*$per_page;
+		// $value		= array_values($this->data);
+		// $all_row	= count($value);
+		// $all_page	= round($all_row/$per_page);//allpage
+		// $distance	=3;
+		// $page_li[]=1;
+		// if($page>$distance + 1){
+		// 	$page_li[]="...";
+		// }
+		// for($i=2;$i<$all_page;$i++){
+		// 	if($i > $page-$distance  && $i < $page+$distance ){
+		// 		$page_li[]=$i;
+		// 	}
+		// }
+		// if($page<$all_page-$distance ){
+		// 	$page_li[]="...";
+		// }
+		// $page_li[] = $all_page;
+		// foreach ($page_li as $key => $value) {
+		// 	$html .= "<li><a ".( (is_numeric($value) && $page != $value) ? "href='?page=".$value :"." )." '>".$value."</a></li>";
+		// }
 		
-		for($i=0;$i<=$limit;$i++){
+		$params["page"]			= $page;
+		$params["per_page"]		= $per_page;
+		$value		= array_values($this->data);
+		$params["all_row"]		= count($value);
+		$params["distance"]		= 5;
+		$html = $this->paranation($params);
+		for($i=0;$i<=$per_page;$i++){
 			$return["data"][$value[$i+$offset]["id"]] = $value[$i+$offset];
 		}
-		$return["pager"]["html"] = "<ul></ul>";
 
+		$return["pager"]["html"] = "<div class='pagination_box'><ul>".$html."</ul></div>";
 		return $return;
 	}
 
 	function getDetailArticle($id){
 		return $this->data[$id];
+	}
+	/**
+		* paranation
+		*
+		* params["page"]
+		* params["per_page"]
+		* params["all_row"]
+		* params["distance"]
+		* @return void
+		* @author
+	**/
+
+	function paranation($params){
+
+		extract($params);
+		$all_page = round($all_row/$per_page);
+		$offset = $page*$per_page;
+		$distance = ($distance<5?5:$distance);
+		$page_li=array();
+		$page_li[]=1;
+		if($page>$distance + 1){
+			$page_li[]="...";
+		}
+		for($i=2;$i<$all_page;$i++){
+			if($i > $page-$distance  && $i < $page+$distance ){
+				$page_li[]=$i;
+			}
+		}
+		if($page<$all_page-$distance ){
+			$page_li[]="...";
+		}
+		$page_li[] = $all_page;
+		$html = "";
+		foreach ($page_li as $key => $value) {
+			$html .= "<li><a ".( (is_numeric($value) && $page != $value) ? "href='?page=".$value :"." )." '>".$value."</a></li>";
+		}
+		return $html;
 	}
 }
 $db = new Db_csv;
