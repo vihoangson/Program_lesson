@@ -155,6 +155,7 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action" && $_POST["submit"] == "
 									<td><input type="checkbox" name="filename[]" value="'.$value.'"></td>
 									<td><img src="show_img.php?file='.$value.'" style="width:50px;"></td>
 									<td>'.$value.'</td>
+									<td>[<a href="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'">DOWNLOAD</a>]</td>
 									<td>
 
 										<div class="input-group">
@@ -205,7 +206,8 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action" && $_POST["submit"] == "
 								<tr>
 									<td><input type="checkbox" name="filename[]" value="'.$value.'"></td>
 									<td></td>
-									<td>'.$value.'</td>
+									<td>'.$value.' </td>
+									<td>[<a href="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].PATH_UPLOAD.$value.'">DOWNLOAD</a>]</td>
 									<td>
 
 										<div class="input-group">
