@@ -170,7 +170,7 @@ if(!empty($_POST["form"]) && $_POST["form"] == "action" && $_POST["submit"] == "
 												<button type="button" class="btn btn-default" onclick="add_clipboard(\'#input_img_'.$key.'\');"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
 											</span>
 										</div> 
-									</td>
+									</td> 
 
 								</tr>
 								';
