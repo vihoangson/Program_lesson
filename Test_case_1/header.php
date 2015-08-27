@@ -20,7 +20,6 @@ if(preg_match("/^fix_/", $_GET["op"])){
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<base href="http://program_lesson/Test_case_1/">
 		<!-- <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'> -->
 		<link href="template/css/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
