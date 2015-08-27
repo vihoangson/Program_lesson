@@ -63,7 +63,8 @@ if(preg_match("/^fix_/", $_GET["op"])){
 		<script type="text/javascript">
 		function change_case_db(var_db){
 			$.post("/Test_case_1/index.php",{op:"change_db",case_change:var_db,ajax:true},function(data){console.log(data)});
-			location.reload();
+			//location.reload();
+			window.location.reload();
 		}
 		</script>
 	</head>
