@@ -34,6 +34,7 @@ class Db_csv{
 			case "mysql":
 				$s		= microtime(true);
 				$conn	=mysql_connect("localhost","root","");
+				mysql_set_charset('utf8',$conn);
 				mysql_select_db("test_mysql",$conn);
 				$sql	="select * from baiviet";
 				$query	=mysql_query($sql);
