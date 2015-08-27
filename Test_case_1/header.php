@@ -1,7 +1,17 @@
-<?php 
+<?php
+//Testmod to login
+$security_mod = true;
+if($security_mod){
+	session_start();
+	if($_SESSION["login"]!=1){
+		header("Location:/login.php");
+	}
+}
 require("class/db.php");
-
-
+if(preg_match("/^fix_/", $_GET["op"])){
+	$db->$_GET["op"]();
+	die;
+}
  ?><!DOCTYPE HTML>
 <html>
 	<head>

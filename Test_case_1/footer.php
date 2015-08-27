@@ -5,7 +5,33 @@
 								<h2>Feugiat Tempus</h2>
 							</header>
 							<ul class="style1">
-								<li><a href="#">Maecenas luctus lectus at sapien</a></li>
+								<?php 
+
+								$baiviet_nhom = array(
+									array('cid' => '1','title' => 'Nhiếp ảnh','align_title' => 'Nhiep-anh'),
+									array('cid' => '2','title' => 'Thiết kế mỹ thuật','align_title' => 'Thiet-ke-my-thuat'),
+									array('cid' => '3','title' => 'Kiến trúc','align_title' => 'Kien-truc'),
+									array('cid' => '4','title' => 'Khéo tay','align_title' => 'Kheo-tay'),
+									array('cid' => '5','title' => 'Tin tức game','align_title' => 'Tin-tuc-game'),
+									array('cid' => '6','title' => 'Download game','align_title' => 'Download-game'),
+									array('cid' => '7','title' => 'Trợ giúp game','align_title' => 'Tro-giup-game'),
+									array('cid' => '8','title' => 'Phần mềm','align_title' => 'Phan-mem'),
+									array('cid' => '9','title' => 'Thủ thuật','align_title' => 'Thu-thuat'),
+									array('cid' => '10','title' => 'Công nghệ','align_title' => 'Cong-nghe'),
+									array('cid' => '11','title' => 'Khoa học đời sống','align_title' => 'Khoa-hoc-doi-song'),
+									array('cid' => '12','title' => 'Xã hội','align_title' => 'Xa-hoi'),
+									array('cid' => '13','title' => 'Kỳ lạ bí ẩn','align_title' => 'Ky-la-bi-an'),
+									array('cid' => '14','title' => 'Công nghệ','align_title' => 'Cong-nghe'),
+									array('cid' => '16','title' => 'Mẹo vặt','align_title' => 'Meo-vat'),
+									array('cid' => '17','title' => 'Khoa học','align_title' => 'Khoa-hoc'),
+									array('cid' => '18','title' => 'Con người','align_title' => 'Con-nguoi'),
+									array('cid' => '19','title' => 'Kỳ lạ','align_title' => 'Ky-la'),
+									array('cid' => '20','title' => 'Chuyện lạ','align_title' => 'Chuyen-la')
+								);
+								foreach ($baiviet_nhom as $key => $value) {
+									echo '<li><a href="index.php?cid='.$value["cid"].'">'.$value["title"].'</a></li>';
+								}
+								?>
 							</ul>
 						</section>
 						<section class="sidebar">
