@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("pagination.php");
 /**
 * 
@@ -7,7 +8,7 @@ class Db_csv{
 	public $data;
 	public $time_load_db;
 	function __construct(){
-		$case_db="variable";
+		$case_db=$_SESSION["case_db"];
 		switch($case_db){
 			case "csv":
 				$s = microtime(true);
@@ -46,7 +47,7 @@ class Db_csv{
 				$e					= microtime(true);
 				$this->time_load_db	= "Time load db Mysql: ".($e-$s);
 			break;
-			case "variable":
+			default://variable
 				$s		= microtime(true);
 				include(__DIR__."/../db/database_variable.php");
 				$this->data=$baiviet;

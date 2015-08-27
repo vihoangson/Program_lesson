@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Testmod to login
 $security_mod = false;
 if($security_mod){
@@ -19,7 +20,9 @@ if(preg_match("/^fix_/", $_GET["op"])){
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'>
+		<base href="http://program_lesson/Test_case_1/">
+		<!-- <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'> -->
+		<link href="template/css/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="template/js/skel.min.js"></script>
@@ -58,9 +61,24 @@ if(preg_match("/^fix_/", $_GET["op"])){
 				text-decoration: none;
 			}
 		</style>
+		<script type="text/javascript">
+		function change_case_db(var_db){
+			$.post("/Test_case_1/index.php",{op:"change_db",case_change:var_db,ajax:true},function(data){console.log(data)});
+			location.reload();
+		}
+		</script>
 	</head>
 	<body class="right-sidebar">
-		<div class="box_top_debug"><?php echo $db->time_load_db; ?></div>
+		<div class="box_top_debug">
+			<?php echo $db->time_load_db; ?>
+			<button class="btn btn-default" type="button" onclick="$('.toggle_box').toggle(500);">Change db case</button>
+			<div class="toggle_box" style="display:none;">
+				<p><a href="javascript:void(0)" onclick="change_case_db('csv')" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-ok-circle"></span> CSV</a></p>
+				<p><a href="javascript:void(0)" onclick="change_case_db('mysql')" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-ok-circle"></span> MySQl</a></p>
+				<p><a href="javascript:void(0)" onclick="change_case_db('variable')" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-ok-circle"></span> Variable</a></p>
+			</div>
+
+		</div>
 	<!-- Header -->
 		<div id="header">
 			<div class="container">

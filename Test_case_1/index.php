@@ -1,4 +1,9 @@
 <?php
+session_start();
+if($_POST["op"]=="change_db" && $_POST["ajax"]=="true"){
+	$_SESSION["case_db"] = $_POST["case_change"];
+	die;
+}
 require "header.php" ;
 ?>
 	<div class="9u">
