@@ -1,6 +1,6 @@
 <?php
 //Testmod to login
-$security_mod = true;
+$security_mod = false;
 if($security_mod){
 	session_start();
 	if($_SESSION["login"]!=1){

@@ -7,26 +7,54 @@ class Db_csv{
 	public $data;
 	public $time_load_db;
 	function __construct(){
-		$s = microtime(true);
-		$file = __DIR__.'/../db/database.csv';
-		$row = 1;
-		if (($handle = fopen($file, "r")) !== FALSE) {
-			$csv = array();
-			while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-				if($row==1){
-					$column_name = $data;
+		$case_db="variable";
+		switch($case_db){
+			case "csv":
+				$s = microtime(true);
+				$file = __DIR__.'/../db/database.csv';
+				$row = 1;
+				if (($handle = fopen($file, "r")) !== FALSE) {
+					$csv = array();
+					while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+						if($row==1){
+							$column_name = $data;
+						}else{
+							foreach ($column_name as $key => $value) {
+								$this->data[$data[0]][$value] = $data[$key];
+							}
+						}
+						$row ++;
+					}
+					fclose($handle);
+				}
+				$e = microtime(true);
+				$this->time_load_db = "Time load db CSV: ".($e-$s);
+			break;
+			case "mysql":
+				$s		= microtime(true);
+				$conn	=mysql_connect("localhost","root","");
+				mysql_select_db("test_mysql",$conn);
+				$sql	="select * from baiviet";
+				$query	=mysql_query($sql);
+				if(mysql_num_rows($query) == 0){
+					echo "Chua co du lieu";
 				}else{
-					foreach ($column_name as $key => $value) {
-						$this->data[$data[0]][$value] = $data[$key];
+					while($row=mysql_fetch_array($query)){
+						$this->data[$row["id"]]=$row;
 					}
 				}
-				$row ++;
-			}
-			fclose($handle);
+				$e					= microtime(true);
+				$this->time_load_db	= "Time load db Mysql: ".($e-$s);
+			break;
+			case "variable":
+				$s		= microtime(true);
+				include(__DIR__."/../db/database_variable.php");
+				$this->data=$baiviet;
+				$e					= microtime(true);
+				$this->time_load_db	= "Time load db Variable: ".($e-$s);
+			break;
+			
 		}
-		$e = microtime(true);
-		$this->time_load_db = "Time load db: ".($e-$s);
-		
 	}
 
 	function getAllData(){
