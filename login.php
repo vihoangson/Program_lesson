@@ -11,7 +11,7 @@ if($_GET["op"]=="s"){
 if(
 	$_POST["Username"]=="root"
 	&&
-	$_POST["Password"]=="santosanto"
+	md5($_POST["Password"])=="2d48c8962355d6c5443c9de2f71ff696"
 ){
 	$_SESSION["login"]=1;
 	header("Location: /");
