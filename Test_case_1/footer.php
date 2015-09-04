@@ -5,7 +5,7 @@
 								<h2>Feugiat Tempus</h2>
 							</header>
 							<ul class="style1">
-								<?php 
+								<?php
 
 								$baiviet_nhom = array(
 									array('cid' => '1','title' => 'Nhiếp ảnh','align_title' => 'Nhiep-anh'),
