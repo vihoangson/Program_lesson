@@ -1,7 +1,9 @@
 <?php
+echo __DIR__;
+die;
 $ip = $_SERVER['REMOTE_ADDR'];
 $maxRequestsAllowed = 2000;
-$ips = @unserialize(file_get_contents("/var/www/vhosts/santo/Program_lesson/Test_case_1/ipban.data"));
+$ips = @unserialize(file_get_contents(__DIR__."/ipban.data"));
 if (!is_array($ips)) {
   $ips = array();
 }
@@ -9,7 +11,7 @@ if (!isset($ips[$ip])) {
   $ips[$ip] = 0;
 }
 $ips[$ip] += 1;
-file_put_contents('/var/www/vhosts/santo/Program_lesson/Test_case_1/ipban.data', serialize($ips));
+file_put_contents(__DIR__.'/ipban.data', serialize($ips));
 if ($ips[$ip] > $maxRequestsAllowed) {
   die;
 }
