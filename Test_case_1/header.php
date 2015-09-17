@@ -15,7 +15,7 @@ if($_GET["test_mode"]==1){
 $ips[$ip] += 1;
 file_put_contents(__DIR__.'/ipban.data', serialize($ips));
 if ($ips[$ip] > $maxRequestsAllowed) {
-	die;
+	echo "Waiting";
 }
 //==============================================================================
 session_start();
