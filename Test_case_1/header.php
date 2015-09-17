@@ -1,22 +1,26 @@
 <?php
-$ip = $_SERVER['REMOTE_ADDR'];
-$maxRequestsAllowed = 2000;
-$ips = @unserialize(file_get_contents(__DIR__."/ipban.data"));
-if (!is_array($ips)) {
-  $ips = array();
+//==============================================================================
+if($_GET["test_mod"]==1){
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$maxRequestsAllowed = 2000;
+	$ips = @unserialize(file_get_contents(__DIR__."/ipban.data"));
+	if (!is_array($ips)) {
+		$ips = array();
+	}
+	if (!isset($ips[$ip])) {
+		$ips[$ip] = 0;
+	}
+	if($_GET["test_mode"]==1){
+		print_r($ips);
+	}
+	$ips[$ip] += 1;
+	file_put_contents(__DIR__.'/ipban.data', serialize($ips));
+	if ($ips[$ip] > $maxRequestsAllowed) {
+		die;
+	}
+
 }
-if (!isset($ips[$ip])) {
-  $ips[$ip] = 0;
-}
-if($_GET["test_mode"]==1){
-	print_r($ips);
-}
-$ips[$ip] += 1;
-file_put_contents(__DIR__.'/ipban.data', serialize($ips));
-if ($ips[$ip] > $maxRequestsAllowed) {
-  die;
-}
-//==========================
+//==============================================================================
 session_start();
 //Testmod to login
 $security_mod = false;
