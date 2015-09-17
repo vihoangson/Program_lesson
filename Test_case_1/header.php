@@ -1,6 +1,4 @@
 <?php
-echo __DIR__;
-die;
 $ip = $_SERVER['REMOTE_ADDR'];
 $maxRequestsAllowed = 2000;
 $ips = @unserialize(file_get_contents(__DIR__."/ipban.data"));
