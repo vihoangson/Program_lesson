@@ -1,6 +1,12 @@
 <?php
 	$s = microtime(true);
-	$case = "mysql";
+	if($_GET["case"]){
+		$case = $_GET["case"];
+	}else{
+		$case = "mysql";
+	}
+	
+
 	switch($case){
 		case "mysql":
 			$conn	=mysql_connect("localhost","root","");
