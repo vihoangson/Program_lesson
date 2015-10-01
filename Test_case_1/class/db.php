@@ -9,6 +9,7 @@ class Db_csv{
 	public $time_load_db;
 	function __construct(){
 		$case_db=$_SESSION["case_db"];
+		$case_db="mysql";
 		switch($case_db){
 			case "csv":
 				$s = microtime(true);

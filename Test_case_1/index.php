@@ -1,34 +1,89 @@
 <?php
-session_start();
-if($_POST["op"]=="change_db" && $_POST["ajax"]=="true"){
-	$_SESSION["case_db"] = $_POST["case_change"];
-	die;
+if($_GET["case"]!="no_db"){
+	$s = microtime(true);
+	if($_GET["case"]){
+		$case = $_GET["case"];
+	}else{
+		$case = "mysql";
+	}
+	
+
+	switch($case){
+		case "mysql":
+			$conn	=mysql_connect("localhost","root","");
+			mysql_set_charset('utf8',$conn);
+			mysql_select_db("test_case",$conn);
+			$sql	="select * from user";
+			$query	=mysql_query($sql);
+			if(mysql_num_rows($query) == 0){
+				echo "Chua co du lieu";
+				die;
+			}
+		break;
+		case "variable":
+			require("db.php");
+		break;
+	}
 }
-require "header.php" ;
-?>
-	<div class="9u">
-		<section>
-			<header>
-				<h2>Tin tức</h2>
-				<span class="byline">Augue praesent a lacus at urna congue rutrum</span>
-				<?php
-				if($_GET["cid"]){
-					$data_pager = $db->getArticlesByCidPager($_GET["cid"],10,intval($_GET["page"]));
-				}else{
-					$data_pager = ($db->getAllDataPager(10,intval($_GET["page"])));
+
+  ?>
+<table>
+	<tr>
+		<td>
+		ID
+		</td>
+		<td>
+		Name
+		</td>
+		<td>
+		Address
+		</td>
+		<td>
+		Restaurant ID
+		</td>
+	</tr>
+   <?php
+		switch($case){
+			case "mysql":
+			$key=0;
+				while($row=mysql_fetch_array($query)){
+					$key++;
+					$name			= $row["name"];
+					$address		= $row["address"];
+					$restaurantID	= $row["restaurantID"];
+					?>
+					<tr>
+						<td><?php echo $key; ?></td>
+						<td><?php echo $name; ?></td>
+						<td><?php echo $address; ?></td>
+						<td><?php echo $restaurantID; ?></td>
+					</tr>
+					<?php
 				}
-				
-				foreach ($data_pager["data"] as $key => $value) {
-					echo "<br>
-					".($value["image"] ?"<img src='".$value["image"]."' class='img_thumb'>":"")."
-					<h3><a href='detail.php?id=".$value["id"]."'>".$value["title"]."</a></h3>
-					<p>".$value["compact"]."</p>
-					<div class='clearfix' style='clear:both;'></div>
-					<hr>";
+			break;
+			case "variable":
+				foreach ($array_data as $key => $value) {
+					$name			= $value["name"];
+					$address		= $value["address"];
+					$restaurantID	= $value["restaurantID"];
+					?>
+					<tr>
+						<td><?php echo $key; ?></td>
+						<td><?php echo $name; ?></td>
+						<td><?php echo $address; ?></td>
+						<td><?php echo $restaurantID; ?></td>
+					</tr>
+					<?php
 				}
-				echo $data_pager["pager"]["html"];
-				?>
-			</header>
-		</section>
-	</div>
-<?php require "footer.php" ?>
+			break;
+		}
+	?>
+   </table>
+<?php
+		//Code test speed
+		$e = microtime(true);
+		echo "<h3>".($e-$s)."</h3>";
+die;
+	echo file_get_contents("db.json");
+	//echo json_decode(file_get_contents("db.json"));
+ ?>
