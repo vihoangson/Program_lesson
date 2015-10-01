@@ -83,7 +83,7 @@ if($_GET["case"]!="no_db"){
 		//Code test speed
 		$e = microtime(true);
 		echo "<h3>".($e-$s)."</h3>";
-die;
-	echo file_get_contents("db.json");
-	//echo json_decode(file_get_contents("db.json"));
+if($case == "mysql"){
+	mysql_close($conn);
+}
  ?>
