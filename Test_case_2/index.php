@@ -37,6 +37,10 @@ $servers = array(
 );
 $memcached = new Memcached;
 $memcached->addServers($servers);
+if($_GET["op"]=="delete"){
+	$memcached->delete("qr");
+}
+
 if(!$memcached->get("qr")){
 	$db = array();
 	$conn	=mysql_connect("localhost","root","");
@@ -49,12 +53,14 @@ if(!$memcached->get("qr")){
 		die;
 	}
 	$query_rs = (mysql_fetch_all($query));
-	$memcached->set("qr",$query_rs);
+	if(is_array($query_rs)){
+		$memcached->set("qr",$query_rs);
+	}
 }
 
 $s = microtime(true);
-//Code test speed
-$m= $memcached->get("qr");
+//Code tesct speed
+$m= $memcahed->get("qr");
 foreach ($m as $key => $value) {
 	echo $value["name"];
 }
