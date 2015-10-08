@@ -1,41 +1,35 @@
 <?php
-// Định nghĩa thông tin kết nối
-// define('MEMCACHED_HOST', '10.11.8.118');
-// define('MEMCACHED_PORT', '11211');
+$servers = array(
+    array('localhost', 11211, 33),
+);
+$memcacheD = new Memcached;
+$memcacheD->addServers($servers);
 
-// Định nghĩa thông tin kết nối
-define('MEMCACHED_HOST', '10.11.8.118');
-define('MEMCACHED_PORT', '11211');
- 
-// Khỏi tạo kết nối memcache
-$memcached = new Memcached;
-$memcache = new Memcache;
-$cacheAvailable = $memcache->connect(MEMCACHED_HOST, MEMCACHED_PORT);
-var_dump($cacheAvailable);
-//$memcache->set("product",array(123,14,1,24,12,54,12,5,12,34,12,3,12,3,12,3,));
-var_dump($memcache->get("product"));
-die;
+$checks = array(
+    123,
+    4542.32,
+    'a string',
+    true,
+    array(123, 'string'),
+    (object)array('key1' => 'value1'),
+);
+foreach ($checks as $i => $value) {
+    print "Checking WRITE with Memcache\n";
+    $key = 'cachetest' . $i;
+    usleep(100);
+    $valD = $memcacheD->get($key);
+    if ($val !== $valD) {
+        print "Not compatible!";
+        var_dump(compact('val', 'valD'));
+    }
 
-// Khởi tạo biến $product = null
-$product = null;
- 
-// Đầu tiên,kiểm tra dữ liệu có tồn tại trong cache của chúng ta hay không ?
-// Kiểm tra biến $cacheAvailable đã được khởi tạo ở mục 1 có thành công không (true), ngược lại là (false) 
-if ($cacheAvailable == true)
-{
-    // Sử dụng key để lấy value là thông tin của product
-    $key = 'product_' . $id;
- 
-    // Lấy thông tin product thông qua key
-    $product = $memcache->get($key);
+    print "Checking WRITE with MemcacheD\n";
+    $key = 'cachetest' . $i;
+    //$memcacheD->set($key, $value);
+    usleep(100);
+    $valD = $memcacheD->get($key);
+    if ($val !== $valD) {
+        print "Not compatible!";
+        var_dump(compact('val', 'valD'));
+    }
 }
- 
-// Nếu biến product bằng null thì lúc này chúng ta mới lấy dữ liệu từ db
-if (!$product)
-{
-    //Đọc dữ liệu từ db
-    $sql = "SELECT id, name, description, price FROM products WHERE id = " . $id;
-    $queryResource = mysqli_query($conn, $sql);
-    $product = mysqli_fetch_assoc($queryResource);
-}
-?>
