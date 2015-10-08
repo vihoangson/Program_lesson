@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Định nghĩa thông tin kết nối
 // define('MEMCACHED_HOST', '10.11.8.118');
 // define('MEMCACHED_PORT', '11211');
@@ -8,6 +8,7 @@ define('MEMCACHED_HOST', '10.11.8.118');
 define('MEMCACHED_PORT', '11211');
  
 // Khỏi tạo kết nối memcache
+$memcached = new Memcached;
 $memcache = new Memcache;
 $cacheAvailable = $memcache->connect(MEMCACHED_HOST, MEMCACHED_PORT);
 var_dump($cacheAvailable);
