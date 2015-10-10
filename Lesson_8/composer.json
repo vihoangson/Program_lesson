@@ -1,0 +1,6 @@
+{
+    "require": {
+        "michelf/php-markdown": "^1.5",
+        "components/font-awesome": "^4.4"
+    }
+}
