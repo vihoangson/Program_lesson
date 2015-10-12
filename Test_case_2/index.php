@@ -62,6 +62,9 @@ if(isset($_GET["op"])){
 				$query_rs = (mysql_fetch_all($query));
 
 				$memcached->set("data_user",$query_rs);
+				echo 'generate cache';
+			}else{
+				echo 'get cache';
 			}
 
 			$s = microtime(true);
