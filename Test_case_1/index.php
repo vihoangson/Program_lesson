@@ -1,4 +1,15 @@
 <?php
+echo "
+<hr>
+<h3><p><a href='index.php?case=mysql'>Mysql - Deliberate</a></p></h3>
+<h3><p><a href='index.php?case=mysql&amp;op=random'>Mysql - Random</a></p></h3>
+<h3><p><a href='index.php?case=variable'>Variable - Deliberate</a></p></h3>
+<h3><p><a href='index.php?case=variable&amp;op=random'>Variable - Random</a></p></h3>
+<hr>
+";
+if(!isset($_GET["case"])){
+	return;
+}
 if($_GET["case"]!="no_db"){
 	$s = microtime(true);
 	if($_GET["case"]){
@@ -10,18 +21,47 @@ if($_GET["case"]!="no_db"){
 
 	switch($case){
 		case "mysql":
-			$conn	=mysql_connect("localhost","root","");
-			mysql_set_charset('utf8',$conn);
-			mysql_select_db("test_case",$conn);
-			$sql	="select * from user";
-			$query	=mysql_query($sql);
-			if(mysql_num_rows($query) == 0){
-				echo "Chua co du lieu";
-				die;
+			if(isset($_GET["op"]) && $_GET["op"]=="random"){
+				$conn	=mysql_connect("localhost","root","");
+				mysql_set_charset('utf8',$conn);
+				mysql_select_db("test_case",$conn);
+				$sql	="select * from user order by rand() limit 10";
+				$query	=mysql_query($sql);
+				if(mysql_num_rows($query) == 0){
+					echo "Chua co du lieu";
+					die;
+				}
+			}else{
+				$conn	=mysql_connect("localhost","root","");
+				mysql_set_charset('utf8',$conn);
+				mysql_select_db("test_case",$conn);
+				$sql	="select * from user limit 10";
+				$query	=mysql_query($sql);
+				if(mysql_num_rows($query) == 0){
+					echo "Chua co du lieu";
+					die;
+				}
 			}
 		break;
 		case "variable":
 			require("db.php");
+			if(isset($_GET["op"]) && $_GET["op"]=="random"){
+				$max = count($array_data);
+				foreach ($array_data as $key => $value) {
+					$array_data_tmp[] = $array_data[rand(1,$max)];
+					if($key>=10){
+						break;
+					}
+				}
+			}else{
+				foreach ($array_data as $key => $value) {
+					$array_data_tmp[] = $value;
+					if($key>=10){
+						break;
+					}
+				}
+			}
+			$array_data = $array_data_tmp;
 		break;
 	}
 }
