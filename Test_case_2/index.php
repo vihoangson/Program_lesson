@@ -110,7 +110,7 @@ if(isset($_GET["op"])){
 		break;
 		case "delete":
 			$memcached->delete("data_user");
-			$memcached->delete("test_case_rand");
+			$memcached->delete("data_user_rand");
 			echo "<h2>Clear ... </h2>";
 		break;
 	}
