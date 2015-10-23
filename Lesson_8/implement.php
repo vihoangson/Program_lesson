@@ -26,16 +26,19 @@ class MyDocument implements Document{
 	public function cutData(){
 		try{
 			echo "cutData";
+			throw new Exception("Exception 1");
 			self::cancelData();
 		}catch(Exception $e){
 			header("HTTP/1.1 400 Bad request");
+			echo "<br>";
 			echo $e->getMessage();
+			echo "<br>";
 		}
 	}
 
 	public function cancelData(){
 		if(true){
-			throw new Exception("không đủ đẹp trai");
+			throw new Exception("Exception 2");
 		}
 	}
 
