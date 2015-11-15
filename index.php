@@ -142,7 +142,7 @@ if($security_mod){
 
 		</div><form class="form-horizontal">
 <fieldset>
-
+<iframe width="100%" height="300" src="//jsfiddle.net/vihoangson/wb7gsfoh/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->
